@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-name-card'`, () => {
+  it(`should have as title 'vmt-healthy-care-systems'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-name-card');
+    expect(app.title).toEqual('vmt-healthy-care-systems');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-name-card app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('vmt-healthy-care-systems app is running!');
   });
 });
