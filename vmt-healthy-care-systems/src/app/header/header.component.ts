@@ -12,4 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  view(): void {
+    window.scrollTo(0, 0);
+  }
+
 }
