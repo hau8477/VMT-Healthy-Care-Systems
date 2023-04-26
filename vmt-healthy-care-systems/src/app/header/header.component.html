@@ -18,7 +18,7 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
 
-    <h1 class="logo me-auto"><a class="text-decoration-none" routerLink="" (click)="view()">VMT Healthy Care</a></h1>
+    <h1 class="logo me-auto"><a class="text-decoration-none" routerLink="" (click)="view()">VMT Healthy</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
 <!--     <a href="index.html" class="logo me-auto"><img src="src/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -47,12 +47,14 @@
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+        <li><a class="nav-link scrollto" *ngIf="isLoggedIn"><strong>{{name}}</strong></a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
     <a href="#appointment" class="appointment-btn scrollto text-decoration-none"><span class="d-none d-md-inline">Đặt lịch</span> khám</a>
-    <a routerLink="/login" class="appointment-btn scrollto text-decoration-none"><span class="d-none d-md-inline">Đăng </span>nhập</a>
+    <a *ngIf="!isLoggedIn" routerLink="/login" class="appointment-btn scrollto text-decoration-none"><span class="d-none d-md-inline">Đăng </span>nhập</a>
+    <button *ngIf="isLoggedIn" (click)="logOut()" class="appointment-btn scrollto text-decoration-none border-0"><span class="d-none d-md-inline">Đăng </span>xuất</button>
 
   </div>
 </header><!-- End Header -->

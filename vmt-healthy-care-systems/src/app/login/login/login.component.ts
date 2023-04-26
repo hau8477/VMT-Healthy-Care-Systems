@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
       username: new FormControl(),
       password: new FormControl(),
       rememberMe: new FormControl(false)
-
     });
 
     if (this.tokenStorageService.getToken()) {

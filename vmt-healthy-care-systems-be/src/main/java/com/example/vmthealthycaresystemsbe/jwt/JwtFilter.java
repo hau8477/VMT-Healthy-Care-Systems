@@ -25,31 +25,50 @@ public class JwtFilter extends OncePerRequestFilter {
     private AccountDetailService accountDetailService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-                                    FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
         try {
+            // Lấy token JWT từ request
             String jwt = parseJwt(request);
-            System.out.println("jhbjhbhj:" + jwt);
+
+            System.out.println("Token JWT: " + jwt);
+
+            // Nếu JWT hợp lệ thì tiến hành xác thực và cấp quyền truy cập
             if (jwt != null && jwtUtility.validateJwtToken(jwt)) {
+                // Lấy thông tin username từ JWT
                 String username = jwtUtility.getUserNameFromJwtToken(jwt);
 
-
+                // Tải thông tin chi tiết của người dùng từ database
                 UserDetails userDetails = accountDetailService.loadUserByUsername(username);
+
+                // Tạo đối tượng authentication để xác thực người dùng
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
+
+                // Cung cấp chi tiết của request để phục vụ cho việc xác thực
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
+                // Thực hiện xác thực và cấp quyền truy cập cho người dùng
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception e) {
-            logger.error("Cannot set user authentication: {}", e);
+            // Ghi log lỗi
+            logger.error("Không thể xác thực người dùng: {}", e);
         }
+
+        // Chuyển request và response đến filter tiếp theo trong chuỗi
         filterChain.doFilter(request, response);
     }
 
+
     private String parseJwt(HttpServletRequest request) {
+        // Lấy giá trị của tiêu đề "Authorization" trong yêu cầu HTTP đến.
         String headerAuth = request.getHeader("Authorization");
+
+        // Kiểm tra xem giá trị của tiêu đề "Authorization" có khác rỗng và có bắt đầu bằng chuỗi "Bearer " hay không.
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
+            // Nếu giá trị của tiêu đề "Authorization" hợp lệ, phương thức sẽ trả về
+            // chuỗi JWT bắt đầu từ vị trí thứ 7 trong chuỗi.
             return headerAuth.substring(7, headerAuth.length());
         }
         return null;
