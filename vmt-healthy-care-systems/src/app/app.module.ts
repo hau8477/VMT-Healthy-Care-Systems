@@ -8,6 +8,7 @@ import {MainComponent} from './main/main.component';
 import {HeaderComponent} from './header/header.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './model/auth.interceptor';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {AuthInterceptor} from './model/auth.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
+import java.util.List;
+
 @RestController
 @RequestMapping("api/doctors")
 @CrossOrigin("*")
@@ -22,5 +25,16 @@ public class DoctorRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(doctor, HttpStatus.OK);
+    }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Doctor>> findAll() {
+        List<Doctor> doctors = this.doctorService.findAll();
+
+        if (doctors.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(doctors, HttpStatus.OK);
     }
 }
