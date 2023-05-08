@@ -1,5 +1,5 @@
 <!-- ======= Đặt lịch khám Section ======= -->
-<section id="appointment" class="appointment section-bg mg-top">
+<section id="appointment" class="appointment section-bg mg-top" *ngIf="role == 'ROLE_USER'">
   <div class="container">
 
     <div class="section-title">
@@ -7,7 +7,7 @@
       <p>Liên hệ với chúng tôi.
         Vui lòng điền thông tin vào biểu mẫu bên dưới nếu bạn muốn sử dụng các dịch vụ của chúng tôi. Ngoài ra, nếu bạn
         có câu hỏi chung,
-        vui lòng liên hệ với chúng tôi tại đây.</p>
+        vui lòng liên hệ với chúng tôi <a href="#contact">tại đây</a>.</p>
     </div>
 
     <form class="php-email-form" [formGroup]="formCreateCustomer" (ngSubmit)="onSubmit()">

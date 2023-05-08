@@ -53,9 +53,9 @@
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
-    <a *ngIf="role == 'ROLE_USER' || role == 'ROLE_ADMIN' " href="#appointment"
-       class="appointment-btn scrollto text-decoration-none">
-      <span class="d-none d-md-inline">Đặt lịch</span> khám</a>
+<!--    <a *ngIf="role == 'ROLE_USER' || role == 'ROLE_ADMIN' " href="#appointment"-->
+<!--       class="appointment-btn scrollto text-decoration-none">-->
+<!--      <span class="d-none d-md-inline">Đặt lịch</span> khám</a>-->
     <a *ngIf="!isLoggedIn" routerLink="/login" class="appointment-btn scrollto text-decoration-none">
       <span class="d-none d-md-inline">Đăng </span>nhập</a>
     <button *ngIf="isLoggedIn" (click)="logOut()" class="appointment-btn scrollto text-decoration-none border-0">

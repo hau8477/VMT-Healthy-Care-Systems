@@ -19,6 +19,10 @@ public class Departments {
     @JsonBackReference
     private Set<Appointments> appointments;
 
+    @OneToMany(mappedBy = "departments")
+    @JsonBackReference
+    private Set<Services> services;
+
     public Departments() {
     }
 

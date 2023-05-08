@@ -36,9 +36,6 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     @JsonBackReference
     private Set<Appointments> appointments;
-    @OneToMany(mappedBy = "doctor")
-    @JsonBackReference
-    private Set<Services> services;
 
     public Doctor() {
     }
@@ -145,13 +142,5 @@ public class Doctor {
 
     public void setAppointments(Set<Appointments> appointments) {
         this.appointments = appointments;
-    }
-
-    public Set<Services> getServices() {
-        return services;
-    }
-
-    public void setServices(Set<Services> services) {
-        this.services = services;
     }
 }

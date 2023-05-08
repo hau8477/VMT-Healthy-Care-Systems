@@ -44,8 +44,14 @@ VALUES
         ('tuyenle@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG'),
         ('thaongo@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG'),
         ('tungnguyen@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG');
+ 
+-- account customer
+INSERT INTO `vmt_healthy_care_systems`.`account` (`username`, `password`)
+VALUES 
+		('hau8477@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG'); 
         
-INSERT INTO `vmt_healthy_care_systems`.`account_role` (`account_id`, `role_id`) VALUES (1, 1);        
+INSERT INTO `vmt_healthy_care_systems`.`account_role` (`account_id`, `role_id`) VALUES (1, 1); 
+INSERT INTO `vmt_healthy_care_systems`.`account_role` (`account_id`, `role_id`) VALUES (36, 2);            
 
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa tim mạch');
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa thần kinh');
@@ -71,7 +77,7 @@ INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES
 INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Gói khám sức khoẻ tổng quát Tiêu chuẩn được thực hiện bởi các bác sĩ chuyên môn giỏi, trình độ cao, giúp đánh giá chính xác về tình trạng sức khỏe chung đồng thời phát hiện sớm một số bệnh lý nguy hiểm', 'Gói khám sức khỏe tổng quát Tiêu chuẩn Nam');
 INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Gói khám sức khỏe tổng quát Toàn diện của Bệnh viện Đa khoa Quốc tế VMT được thiết kế có tính khoa học, tính thực tiễn cao, hoàn toàn khác với việc thực hiện kiểm tra sức khỏe thông thường.', 'Gói khám sức khỏe tổng quát Toàn diện');
 INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Với gói khám sức khoẻ tổng quát trẻ em, bé yêu của bạn sẽ được khám toàn diện kết hợp với chẩn đoán bằng hình ảnh, giúp bạn kiểm tra tổng thể sức khỏe cho bé, sàng lọc triệu chứng để sớm phát hiện và điều trị nếu cần.', 'Gói khám sức khỏe tổng quát Trẻ em');
-
+	
 
 INSERT INTO vmt_healthy_care_systems.doctor (address, date_of_birth, email, flag_delete, gender, id_card, img, name, phone, account_id, departments_id)
 VALUES

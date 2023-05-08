@@ -1,14 +1,21 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Customer} from '../model/customer';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  private customerChangedSubject = new Subject();
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  customerChanged$ = this.customerChangedSubject.asObservable();
+
+  customerChanged() {
+    this.customerChangedSubject.next();
   }
 
   saveCustomer(customer: Customer): Observable<Customer> {

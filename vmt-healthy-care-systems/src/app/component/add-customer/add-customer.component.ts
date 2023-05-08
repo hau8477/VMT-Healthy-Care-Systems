@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../service/customer.service';
+import {Route, Router} from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-customer',
@@ -15,7 +17,8 @@ export class AddCustomerComponent implements OnInit {
   selectedGender = 4;
 
   constructor(private tokenStorageService: TokenStorageService,
-              private customerService: CustomerService) {
+              private customerService: CustomerService,
+              private route: Router) {
   }
 
   ngOnInit(): void {
@@ -46,6 +49,13 @@ export class AddCustomerComponent implements OnInit {
     console.log(this.formCreateCustomer.value);
     this.customerService.saveCustomer(this.formCreateCustomer.value).subscribe(data => {
       console.log(data);
+      this.customerService.customerChanged();
+      Swal.fire({
+        title: 'Thông báo',
+        text: 'Lưu thông tin thành công!',
+        icon: 'success'
+      });
+      this.route.navigateByUrl('');
     }, error => {
       for (const err of error.error) {
         if (err) {

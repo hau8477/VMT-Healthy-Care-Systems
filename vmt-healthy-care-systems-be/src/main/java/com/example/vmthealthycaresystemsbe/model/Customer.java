@@ -32,6 +32,14 @@ public class Customer {
     @JsonBackReference
     private Set<Appointments> appointments;
 
+    @OneToMany(mappedBy = "customer")
+    @JsonBackReference
+    private Set<Cart> carts;
+
+    @OneToMany(mappedBy = "customer")
+    @JsonBackReference
+    private Set<ServicePurchased> servicePurchases;
+
     public Customer() {
     }
 
@@ -121,5 +129,21 @@ public class Customer {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
+    }
+
+    public Set<ServicePurchased> getServicePurchases() {
+        return servicePurchases;
+    }
+
+    public void setServicePurchases(Set<ServicePurchased> servicePurchases) {
+        this.servicePurchases = servicePurchases;
     }
 }

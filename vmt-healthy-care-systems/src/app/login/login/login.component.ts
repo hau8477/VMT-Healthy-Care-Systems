@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ShareService} from '../../service/share.service';
 import Swal from 'sweetalert2';
 import {DoctorService} from '../../service/doctor.service';
+import {CustomerService} from '../../service/customer.service';
 
 @Component({
   selector: 'app-login',
@@ -21,13 +22,15 @@ export class LoginComponent implements OnInit {
   rememberMe: boolean;
   isMember = false;
   username1: string;
+  role?: string;
 
   constructor(private tokenStorageService: TokenStorageService,
               private authService: LoginService,
               private router: Router,
               private route: ActivatedRoute,
               private shareService: ShareService,
-              private doctorService: DoctorService) {
+              private doctorService: DoctorService,
+              private customerService: CustomerService) {
   }
 
   isSignUpActive = false;
@@ -78,44 +81,29 @@ export class LoginComponent implements OnInit {
         this.formLogin.reset();
         this.router.navigateByUrl(this.returnUrl);
         this.shareService.sendClickEvent();
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-          }
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Đăng nhập thành công!',
+          icon: 'success'
         });
-        Toast.fire({
-          icon: 'success',
-          title: 'Đăng nhập thành công'
-        });
+        this.role = this.tokenStorageService.getUser().roles[0];
         this.username1 = this.tokenStorageService.getUser().username;
-        this.doctorService.findTDoctorByEmail(this.username1).subscribe(doctor => {
+        if (this.role === 'ROLE_USER') {
+          this.customerService.findTCustomerByEmail(this.username1).subscribe(customer => {
+            this.router.navigateByUrl('');
+          }, error => {
+            this.router.navigateByUrl('/info-customer');
+          });
+        } else {
           this.router.navigateByUrl('');
-        }, error => {
-          this.router.navigateByUrl('/info-customer');
-        });
+        }
       },
       err => {
         this.authService.isLoggedIn = false;
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-          }
-        });
-        Toast.fire({
-          icon: 'error',
-          title: 'Tên đăng nhập hoặc mật khẩu không đúng'
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Thông tin đăng nhập không chính xác!',
+          icon: 'error'
         });
       }
     );

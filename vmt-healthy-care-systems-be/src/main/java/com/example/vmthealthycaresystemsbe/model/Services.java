@@ -1,6 +1,9 @@
 package com.example.vmthealthycaresystemsbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Services {
@@ -14,11 +17,19 @@ public class Services {
     private String details;
     private boolean flagDelete;
     @ManyToOne
-    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
-    private Doctor doctor;
+    @JoinColumn(name = "departments_id", referencedColumnName = "id")
+    private Departments departments;
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @OneToMany(mappedBy = "services")
+    @JsonBackReference
+    private Set<Cart> carts;
+
+    @OneToMany(mappedBy = "services")
+    @JsonBackReference
+    private Set<ServicePurchased> servicePurchases;
 
     public Services() {
     }
@@ -71,12 +82,12 @@ public class Services {
         this.flagDelete = flagDelete;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Departments getDepartments() {
+        return departments;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDepartments(Departments departments) {
+        this.departments = departments;
     }
 
     public Category getCategory() {
@@ -85,5 +96,21 @@ public class Services {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
+    }
+
+    public Set<ServicePurchased> getServicePurchases() {
+        return servicePurchases;
+    }
+
+    public void setServicePurchases(Set<ServicePurchased> servicePurchases) {
+        this.servicePurchases = servicePurchases;
     }
 }
