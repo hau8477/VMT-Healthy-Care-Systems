@@ -5,6 +5,7 @@ import {LoginService} from '../../service/login.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShareService} from '../../service/share.service';
 import Swal from 'sweetalert2';
+import {DoctorService} from '../../service/doctor.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,17 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   returnUrl: string;
   rememberMe: boolean;
+  isMember = false;
+  username1: string;
 
   constructor(private tokenStorageService: TokenStorageService,
               private authService: LoginService,
               private router: Router,
               private route: ActivatedRoute,
-              private shareService: ShareService) {
+              private shareService: ShareService,
+              private doctorService: DoctorService) {
   }
+
   isSignUpActive = false;
 
   signUp(): void {
@@ -87,6 +92,12 @@ export class LoginComponent implements OnInit {
         Toast.fire({
           icon: 'success',
           title: 'Đăng nhập thành công'
+        });
+        this.username1 = this.tokenStorageService.getUser().username;
+        this.doctorService.findTDoctorByEmail(this.username1).subscribe(doctor => {
+          this.router.navigateByUrl('');
+        }, error => {
+          this.router.navigateByUrl('/info-customer');
         });
       },
       err => {

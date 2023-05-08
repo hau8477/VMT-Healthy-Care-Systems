@@ -8,7 +8,8 @@ import {MainComponent} from './main/main.component';
 import {HeaderComponent} from './header/header.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './model/auth.interceptor';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AddCustomerComponent } from './component/add-customer/add-customer.component';
 
 
 @NgModule({
@@ -17,13 +18,15 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     MainComponent,
     FooterComponent,
+    AddCustomerComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

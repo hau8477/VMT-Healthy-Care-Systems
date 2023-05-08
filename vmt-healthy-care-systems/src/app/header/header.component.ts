@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    this.role = null;
     this.tokenStorageService.signOut();
     const Toast = Swal.mixin({
       toast: true,
@@ -73,6 +74,7 @@ export class HeaderComponent implements OnInit {
     });
     this.username = null;
     this.isLoggedIn = false;
+    this.name = null;
     this.view();
     this.route.navigateByUrl('/login');
     this.ngOnInit();

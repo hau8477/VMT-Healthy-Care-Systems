@@ -1,0 +1,130 @@
+<!-- ======= Đặt lịch khám Section ======= -->
+<section id="appointment" class="appointment section-bg mg-top">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Thông tin khách hàng</h2>
+      <p>Liên hệ với chúng tôi.
+        Vui lòng điền thông tin vào biểu mẫu bên dưới nếu bạn muốn sử dụng các dịch vụ của chúng tôi. Ngoài ra, nếu bạn
+        có câu hỏi chung,
+        vui lòng liên hệ với chúng tôi tại đây.</p>
+    </div>
+
+    <form class="php-email-form" [formGroup]="formCreateCustomer" (ngSubmit)="onSubmit()">
+      <div class="row">
+
+        <div class="col-md-4 form-group">
+          <input type="text" name="name" class="form-control" placeholder="Họ và tên * " formControlName="name"
+                 required="Vui lòng nhập họ và tên">
+          <span
+            class="text-danger"
+            *ngIf="
+                    formCreateCustomer.controls.name?.touched &&
+                    formCreateCustomer.controls.name?.errors?.required">
+                    Vui lòng nhập họ và tên.
+          </span>
+          <span
+            class="text-danger" *ngFor="let error of formCreateCustomer.controls.name?.errors?.errorBE">
+            {{ error }}
+          </span>
+        </div>
+
+        <div class="col-md-4 form-group mt-3 mt-md-0">
+          <input type="date" class="form-control" name="date" placeholder="Ngày sinh * " formControlName="dateOfBirth"
+                 required="Vui lòng nhập ngày sinh">
+          <span
+            class="text-danger"
+            *ngIf="
+                    formCreateCustomer.controls.dateOfBirth?.touched &&
+                    formCreateCustomer.controls.dateOfBirth?.errors?.required">
+                    Vui lòng nhập ngày sinh.
+          </span>
+          <span
+            class="text-danger" *ngFor="let error of formCreateCustomer.controls.dateOfBirth?.errors?.errorBE">
+            {{ error }}
+          </span>
+        </div>
+
+        <div class="col-md-4 form-group mt-3 mt-md-0">
+          <input type="text" class="form-control" name="email" placeholder="Địa chỉ * " formControlName="address"
+                 required="Vui lòng nhập địa chỉ">
+          <span
+            class="text-danger"
+            *ngIf="
+                    formCreateCustomer.controls.address?.touched &&
+                    formCreateCustomer.controls.address?.errors?.required">
+                    Vui lòng nhập địa chỉ.
+          </span>
+          <span
+            class="text-danger" *ngFor="let error of formCreateCustomer.controls.address?.errors?.errorBE">
+            {{ error }}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4 form-group mt-3">
+          <input type="text" class="form-control datepicker" id="phone" placeholder="Số điện thoại *"
+                 formControlName="phone"
+                 required="Vui lòng nhập số điện thoại">
+          <span
+            class="text-danger"
+            *ngIf="
+                    formCreateCustomer.controls.phone?.touched &&
+                    formCreateCustomer.controls.phone?.errors?.required">
+                    Vui lòng nhập số điện thoại.
+          </span>
+          <span
+            class="text-danger" *ngFor="let error of formCreateCustomer.controls.phone?.errors?.errorBE">
+            {{ error }}
+          </span>
+        </div>
+
+        <div class="col-md-4 form-group mt-3">
+          <input type="text" class="form-control datepicker" id="date" placeholder="CMND/CCCD *"
+                 formControlName="idCard"
+                 required="Vui lòng nhập CMND/CCCD">
+          <span
+            class="text-danger"
+            *ngIf="
+                    formCreateCustomer.controls.idCard?.touched &&
+                    formCreateCustomer.controls.idCard?.errors?.required">
+                    Vui lòng nhập CMND/CCCD.
+          </span>
+          <span
+            class="text-danger" *ngFor="let error of formCreateCustomer.controls.idCard?.errors?.errorBE">
+            {{ error }}
+          </span>
+        </div>
+
+        <div class="col-md-4 form-group mt-3">
+          <select class="form-select" formControlName="gender" [(ngModel)]="selectedGender"
+                  required="Vui lòng chọn giới tính">
+            <option value="4" disabled>Chọn giới tính</option>
+            <option [ngValue]="1">Nam</option>
+            <option [ngValue]="0">Nữ</option>
+          </select>
+          <span
+            class="text-danger"
+            *ngIf="
+                    formCreateCustomer.controls.gender?.touched &&
+                    formCreateCustomer.controls.gender?.errors?.required">
+                    Vui lòng chọn giới tính.
+          </span>
+          <span
+            class="text-danger" *ngFor="let error of formCreateCustomer.controls.gender?.errors?.errorBE">
+            {{ error }}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="text-center mg-top-3">
+        <button type="submit" [disabled]="formCreateCustomer.invalid">Lưu thông tin</button>
+      </div>
+    </form>
+
+  </div>
+</section><!-- End Appointment Section -->

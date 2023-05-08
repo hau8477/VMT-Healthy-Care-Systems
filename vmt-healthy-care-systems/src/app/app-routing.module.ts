@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainComponent} from './main/main.component';
+import {AddCustomerComponent} from './component/add-customer/add-customer.component';
 
 const routes: Routes = [
   {
@@ -8,6 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'login', loadChildren: () => import('./login/login.module').then(module => module.LoginModule)
+  },
+  {
+    path: 'info-customer', component: AddCustomerComponent
   }
 ];
 

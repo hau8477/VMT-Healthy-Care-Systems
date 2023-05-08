@@ -229,77 +229,75 @@
     </div>
   </section><!-- End Services Section -->
 
-  <!-- ======= Đặt lịch khám Section ======= -->
-  <section id="appointment" class="appointment section-bg">
-    <div class="container">
+<!--  &lt;!&ndash; ======= Đặt lịch khám Section ======= &ndash;&gt;-->
+<!--  <section id="appointment" class="appointment section-bg" *ngIf="role == 'ROLE_USER' || role == 'ROLE_ADMIN' ">-->
+<!--    <div class="container">-->
 
-      <div class="section-title">
-        <h2>Đặt lịch khám</h2>
-        <p>Liên hệ với chúng tôi
-          Vui lòng điền thông tin vào biểu mẫu bên dưới nếu bạn muốn đặt lịch khám. Ngoài ra, nếu bạn có câu hỏi chung,
-          vui lòng liên hệ với chúng tôi tại đây.</p>
-      </div>
+<!--      <div class="section-title">-->
+<!--        <h2>Đặt lịch khám</h2>-->
+<!--        <p>Liên hệ với chúng tôi-->
+<!--          Vui lòng điền thông tin vào biểu mẫu bên dưới nếu bạn muốn đặt lịch khám. Ngoài ra, nếu bạn có câu hỏi chung,-->
+<!--          vui lòng liên hệ với chúng tôi tại đây.</p>-->
+<!--      </div>-->
 
-      <form class="php-email-form">
-        <div class="row">
-          <div class="col-md-4 form-group">
-            <input type="text" name="name" class="form-control" placeholder="Họ và tên *" data-rule="minlen:4"
-                   data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" placeholder="Email" data-rule="email"
-                   data-msg="Please enter a valid email">
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Số điện thoại * "
-                   data-rule="minlen:4"
-                   data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 form-group mt-3">
-            <input type="text" class="form-control datepicker" id="date" placeholder="Chọn ngày hẹn *">
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3">
-            <select name="department" id="department" class="form-select">
-              <option value="">Chọn một chuyên khoa (nếu bạn biết thông tin này)</option>
-              <option value="Department 1">Department 1</option>
-              <option value="Department 2">Department 2</option>
-              <option value="Department 3">Department 3</option>
-            </select>
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3">
-            <select name="doctor" id="doctor" class="form-select" [(ngModel)]="selectedDoctorId" (change)="logId()">
-              <option value="0" disabled="true">Chọn bác sĩ muốn khám</option>
-              <option [ngValue]="doctor.id" *ngFor="let doctor of doctors">{{doctor.name}}</option>
-            </select>
-            <div class="validate"></div>
-          </div>
-        </div>
+<!--      <form class="php-email-form">-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-4 form-group">-->
+<!--            <input type="text" name="name" class="form-control" placeholder="Họ và tên *" data-rule="minlen:4"-->
+<!--                   data-msg="Please enter at least 4 chars">-->
+<!--            <div class="validate"></div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 form-group mt-3 mt-md-0">-->
+<!--            <input type="email" class="form-control" name="email" placeholder="Email" data-rule="email"-->
+<!--                   data-msg="Please enter a valid email">-->
+<!--            <div class="validate"></div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 form-group mt-3 mt-md-0">-->
+<!--            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Số điện thoại * "-->
+<!--                   data-rule="minlen:4"-->
+<!--                   data-msg="Please enter at least 4 chars">-->
+<!--            <div class="validate"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-4 form-group mt-3">-->
+<!--            <input type="text" class="form-control datepicker" id="date" placeholder="Chọn ngày hẹn *">-->
+<!--            <div class="validate"></div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 form-group mt-3">-->
+<!--            <select name="department" id="department" class="form-select" [(ngModel)]="selectedDepartmentsId" (change)="logId()">-->
+<!--              <option value="0" disabled>Chọn một chuyên khoa (nếu bạn biết thông tin này)</option>-->
+<!--              <option [ngValue]="department.id" *ngFor="let department of departments">{{department.name}}</option>-->
+<!--            </select>-->
+<!--            <div class="validate"></div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 form-group mt-3">-->
+<!--            <select name="doctor" id="doctor" class="form-select" [(ngModel)]="selectedDoctorId" (change)="logId()">-->
+<!--              <option value="0" disabled="true">Chọn bác sĩ muốn khám</option>-->
+<!--              <option [ngValue]="doctor.id" *ngFor="let doctor of doctors">{{doctor.name}}</option>-->
+<!--            </select>-->
+<!--            <div class="validate"></div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div class="form-group mt-3">
-          <textarea class="form-control" name="message" rows="5" placeholder="Mô tả ngắn gọn về bệnh lý *"></textarea>
-          <div class="validate"></div>
-        </div>
-        <div class="mb-3">
-          <div class="loading">Đang tải</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Yêu cầu lịch khám của quý khách đã được gửi thành công. Cảm ơn quý khách! Hãy chờ tin tức liên
-            hệ từ chúng tôi.
-          </div>
-        </div>
-        <div class="text-center">
-          <button type="submit">Đặt lịch khám</button>
-        </div>
-      </form>
+<!--        <div class="form-group mt-3">-->
+<!--          <textarea class="form-control" name="message" rows="5" placeholder="Mô tả ngắn gọn về bệnh lý *"></textarea>-->
+<!--          <div class="validate"></div>-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--          <div class="loading">Đang tải</div>-->
+<!--          <div class="error-message"></div>-->
+<!--          <div class="sent-message">Yêu cầu lịch khám của quý khách đã được gửi thành công. Cảm ơn quý khách! Hãy chờ tin tức liên-->
+<!--            hệ từ chúng tôi.-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="text-center">-->
+<!--          <button type="submit">Đặt lịch khám</button>-->
+<!--        </div>-->
+<!--      </form>-->
 
-    </div>
-  </section><!-- End Appointment Section -->
+<!--    </div>-->
+<!--  </section>&lt;!&ndash; End Appointment Section &ndash;&gt;-->
 
   <!-- ======= Khoa Section ======= -->
   <section id="departments" class="departments">

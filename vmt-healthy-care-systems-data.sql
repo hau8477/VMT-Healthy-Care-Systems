@@ -44,6 +44,8 @@ VALUES
         ('tuyenle@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG'),
         ('thaongo@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG'),
         ('tungnguyen@gmail.com', '$2a$12$5klPDiDpKqoCSYuy61AFkemSRi0AWKZJ6CjtEEQnqQzuHONVzV3fG');
+        
+INSERT INTO `vmt_healthy_care_systems`.`account_role` (`account_id`, `role_id`) VALUES (1, 1);        
 
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa tim mạch');
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa thần kinh');
@@ -62,6 +64,14 @@ INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa tai 
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa tiêu hóa');
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa ung bứu');
 INSERT INTO `vmt_healthy_care_systems`.`departments` (`name`) VALUES ('Khoa thất khớp & miễn dịch học');
+
+INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Khám sức khỏe tổng quát gói VIP là chương trình khám bệnh toàn diện các bộ phận trên cơ thể từ: Mắt, tai, mũi, họng, điện tâm đồ, X - quang tim phổi, siêu âm bụng...', 'Gói khám sức khỏe tổng quát VIP');
+INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Gói khám sức khỏe tổng quát được thiết kế có tính khoa học và tính thực tiễn nhằm phát hiện sớm, can thiệp, điều trị kịp thời nhằm làm giảm đến mức tối thiểu những biến chứng của những bệnh hiểm nghèo đe dọa cuộc sống của bạn.', 'Gói khám sức khỏe tổng quát Nâng cao');
+INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Gói khám sức khỏe tổng quát Tiêu chuẩn Nữ < 40 tuổi được thực hiện bởi các bác sĩ chuyên môn giỏi, trình độ cao, giúp đánh giá chính xác về tình trạng sức khỏe chung đồng thời phát hiện sớm một số bệnh lý nguy hiểm', 'Gói khám sức khỏe tổng quát Tiêu chuẩn Nữ');
+INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Gói khám sức khoẻ tổng quát Tiêu chuẩn được thực hiện bởi các bác sĩ chuyên môn giỏi, trình độ cao, giúp đánh giá chính xác về tình trạng sức khỏe chung đồng thời phát hiện sớm một số bệnh lý nguy hiểm', 'Gói khám sức khỏe tổng quát Tiêu chuẩn Nam');
+INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Gói khám sức khỏe tổng quát Toàn diện của Bệnh viện Đa khoa Quốc tế VMT được thiết kế có tính khoa học, tính thực tiễn cao, hoàn toàn khác với việc thực hiện kiểm tra sức khỏe thông thường.', 'Gói khám sức khỏe tổng quát Toàn diện');
+INSERT INTO `vmt_healthy_care_systems`.`category` (`description`, `name`) VALUES ('Với gói khám sức khoẻ tổng quát trẻ em, bé yêu của bạn sẽ được khám toàn diện kết hợp với chẩn đoán bằng hình ảnh, giúp bạn kiểm tra tổng thể sức khỏe cho bé, sàng lọc triệu chứng để sớm phát hiện và điều trị nếu cần.', 'Gói khám sức khỏe tổng quát Trẻ em');
+
 
 INSERT INTO vmt_healthy_care_systems.doctor (address, date_of_birth, email, flag_delete, gender, id_card, img, name, phone, account_id, departments_id)
 VALUES

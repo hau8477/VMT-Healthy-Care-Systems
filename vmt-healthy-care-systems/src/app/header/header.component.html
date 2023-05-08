@@ -20,7 +20,7 @@
 
     <h1 class="logo me-auto"><a class="text-decoration-none" routerLink="" (click)="view()">VMT Healthy</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
-<!--     <a href="index.html" class="logo me-auto"><img src="src/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    <!--     <a href="index.html" class="logo me-auto"><img src="src/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
@@ -29,7 +29,8 @@
         <li><a class="nav-link scrollto" href="#services">Dịch vụ</a></li>
         <li><a class="nav-link scrollto" href="#departments">Khoa</a></li>
         <li><a class="nav-link scrollto" href="#doctors">Bác sĩ</a></li>
-        <li class="dropdown"><a class="text-decoration-none" href="#"><span>Chuyên khoa trọng điểm</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a class="text-decoration-none" href="#"><span>Chuyên khoa trọng điểm</span> <i
+          class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Drop Down 1</a></li>
             <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -52,9 +53,14 @@
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
-    <a href="#appointment" class="appointment-btn scrollto text-decoration-none"><span class="d-none d-md-inline">Đặt lịch</span> khám</a>
-    <a *ngIf="!isLoggedIn" routerLink="/login" class="appointment-btn scrollto text-decoration-none"><span class="d-none d-md-inline">Đăng </span>nhập</a>
-    <button *ngIf="isLoggedIn" (click)="logOut()" class="appointment-btn scrollto text-decoration-none border-0"><span class="d-none d-md-inline">Đăng </span>xuất</button>
+    <a *ngIf="role == 'ROLE_USER' || role == 'ROLE_ADMIN' " href="#appointment"
+       class="appointment-btn scrollto text-decoration-none">
+      <span class="d-none d-md-inline">Đặt lịch</span> khám</a>
+    <a *ngIf="!isLoggedIn" routerLink="/login" class="appointment-btn scrollto text-decoration-none">
+      <span class="d-none d-md-inline">Đăng </span>nhập</a>
+    <button *ngIf="isLoggedIn" (click)="logOut()" class="appointment-btn scrollto text-decoration-none border-0">
+      <span class="d-none d-md-inline">Đăng </span>xuất
+    </button>
 
   </div>
 </header><!-- End Header -->
