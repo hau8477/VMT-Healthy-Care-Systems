@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './model/auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddCustomerComponent } from './component/add-customer/add-customer.component';
+import { DetailCategoryServiceComponent } from './component/detail-category-service/detail-category-service.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AddCustomerComponent } from './component/add-customer/add-customer.comp
     MainComponent,
     FooterComponent,
     AddCustomerComponent,
+    DetailCategoryServiceComponent,
   ],
     imports: [
         BrowserModule,

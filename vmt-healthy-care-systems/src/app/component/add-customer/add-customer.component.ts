@@ -3,7 +3,7 @@ import {TokenStorageService} from '../../service/token-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../service/customer.service';
 import {Route, Router} from '@angular/router';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-customer',
@@ -39,10 +39,6 @@ export class AddCustomerComponent implements OnInit {
       gender: new FormControl('', [Validators.required]),
       flagDelete: new FormControl(false)
     });
-  }
-
-  logGender() {
-    console.log(this.formCreateCustomer.value);
   }
 
   onSubmit() {

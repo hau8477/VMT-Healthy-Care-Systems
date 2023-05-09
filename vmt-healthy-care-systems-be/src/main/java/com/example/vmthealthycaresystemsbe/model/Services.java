@@ -16,6 +16,9 @@ public class Services {
     private String time;
     private String details;
     private boolean flagDelete;
+    private String timeUse;
+    private String applicableObject;
+    private String subTitle;
     @ManyToOne
     @JoinColumn(name = "departments_id", referencedColumnName = "id")
     private Departments departments;
@@ -112,5 +115,29 @@ public class Services {
 
     public void setServicePurchases(Set<ServicePurchased> servicePurchases) {
         this.servicePurchases = servicePurchases;
+    }
+
+    public String getTimeUse() {
+        return timeUse;
+    }
+
+    public void setTimeUse(String timeUse) {
+        this.timeUse = timeUse;
+    }
+
+    public String getApplicableObject() {
+        return applicableObject;
+    }
+
+    public void setApplicableObject(String applicableObject) {
+        this.applicableObject = applicableObject;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 }

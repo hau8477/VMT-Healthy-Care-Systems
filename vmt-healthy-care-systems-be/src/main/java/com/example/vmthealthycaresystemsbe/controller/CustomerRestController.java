@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,11 @@ public class CustomerRestController {
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@Validated @RequestBody CustomerDTO customerDTO, BindingResult bindingResult) {
+//        if (customerDTO.isGender()) {
+//            FieldError error = new FieldError("objectName", "gender", "Giới tính không hợp lệ.");
+//            bindingResult.addError(error);
+//        }
+
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.NOT_ACCEPTABLE);
         }
