@@ -11,6 +11,7 @@ import {AuthInterceptor} from './model/auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddCustomerComponent } from './component/add-customer/add-customer.component';
 import { DetailCategoryServiceComponent } from './component/detail-category-service/detail-category-service.component';
+import { VndCurrencyPipe } from './model/pipe/vnd-currency.pipe';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { DetailCategoryServiceComponent } from './component/detail-category-serv
     FooterComponent,
     AddCustomerComponent,
     DetailCategoryServiceComponent,
+    VndCurrencyPipe,
   ],
     imports: [
         BrowserModule,

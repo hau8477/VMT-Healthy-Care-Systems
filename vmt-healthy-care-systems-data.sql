@@ -590,7 +590,7 @@ VALUES ('Khám và điều trị các bệnh lý tiêu hóa cho trẻ em', '19/0
         1,
         'Theo thời gian làm việc của VMT Healthy Care: Từ 8h00 đến 17h00 từ thứ 2 đến thứ 6 và sáng thứ 7 (từ 8h00 đến 12h00). Khách hàng vui lòng liên hệ với hotline VMT Healthy Care để biết thông tin chi tiết.',
         6, 15,
-        'https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/kham-tieu-hoa-cho-be.jpg');
+        'https://soyte.namdinh.gov.vn/Uploads/2019/12/8/27/menb.jpg');
 INSERT INTO `vmt_healthy_care_systems`.`services` (`applicable_object`, `date`, `details`, `flag_delete`, `name`,
                                                    `prices`, `quantity`, `sub_title`, `time`, `time_use`, `category_id`,
                                                    `departments_id`, `img`)
