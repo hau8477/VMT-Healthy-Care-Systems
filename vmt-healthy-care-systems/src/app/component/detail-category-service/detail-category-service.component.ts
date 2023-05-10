@@ -13,10 +13,15 @@ export class DetailCategoryServiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.view();
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.idCategory = +paramMap.get('idCategory');
     });
     console.log(this.idCategory);
+  }
+
+  view(): void {
+    window.scrollTo(0, 0);
   }
 
 }

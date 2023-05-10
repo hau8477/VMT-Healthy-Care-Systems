@@ -10,15 +10,23 @@ public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "varchar(255)", unique = true, nullable = false)
+    @Column(columnDefinition = "text", unique = true, nullable = false)
     private String name;
     private double prices;
     private String time;
+    @Column(columnDefinition = "text")
     private String details;
     private boolean flagDelete;
     private String timeUse;
+    @Column(columnDefinition = "text")
     private String applicableObject;
+    @Column(columnDefinition = "text")
     private String subTitle;
+    private String date;
+
+    private int quantity;
+    @Column(columnDefinition = "text")
+    private String img;
     @ManyToOne
     @JoinColumn(name = "departments_id", referencedColumnName = "id")
     private Departments departments;
@@ -139,5 +147,29 @@ public class Services {
 
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
