@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {MainComponent} from './main/main.component';
 import {AddCustomerComponent} from './component/add-customer/add-customer.component';
 import {DetailCategoryServiceComponent} from './component/detail-category-service/detail-category-service.component';
+import {CartComponent} from './component/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   {
     path: 'detail-category-services/:idCategory', component: DetailCategoryServiceComponent
+  },
+  {
+    path: 'cart', component: CartComponent
   }
 ];
 

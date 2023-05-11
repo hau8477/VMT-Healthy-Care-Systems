@@ -1,0 +1,131 @@
+<div class="mg-top">
+
+<!--  <div class="justify-content-center mb-3 text-black ">-->
+<!--    <p class="text-center fs-3 font-color"><strong>Giỏ hàng</strong></p>-->
+<!--  </div>-->
+
+  <div class="container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-md-9">
+
+          <div class="ibox">
+            <div class="ibox-title" *ngIf="carts?.length !== 0">
+              <h5>Giỏ hàng</h5>
+            </div>
+
+            <div *ngIf="carts?.length === 0" class="d-flex justify-content-center mg-bottom text-danger">
+              <h4>Mục quan tâm trống.</h4>
+            </div>
+
+            <div *ngFor="let cart of carts">
+              <div class="ibox-content">
+                <div class="table-responsive">
+                  <table class="table shoping-cart-table">
+                    <tbody>
+                    <tr>
+                      <td class="width-img">
+                        <img [src]="cart.services.img" alt="Product Image" class="width-img">
+                      </td>
+                      <td class="desc width-a">
+                        <h3>
+                          <a href="#" class="text-1977cc">
+                            {{cart.services.name}}
+                          </a>
+                        </h3>
+                        <p class="small">
+                          {{cart.services.subTitle}}
+                        </p>
+                        <dl class="small m-b-none">
+                          <dt>{{cart.services.prices | vndCurrency}}</dt>
+                          <dd>Ngày phát hành: {{cart.services.date}}</dd>
+                        </dl>
+
+                        <div class="m-t-sm">
+                          <!--                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>-->
+                          <!--                        |-->
+                          <a (click)="deleteCart(cart.services.name, cart.id)"
+                             class="text-muted"><i class="fa fa-trash"></i> Xóa khỏi mục quan tâm</a>
+                        </div>
+                      </td>
+                      <td class="width-c">
+                        <div class="input-group">
+
+                        <span class="input-group-prepend">
+                          <button type="button" class="btn btn-default btn-number">-</button>
+                        </span>
+
+                          <p class="form-control">{{cart.quantity}}</p>
+
+                          <span class="input-group-append">
+                          <button type="button" class="btn btn-default btn-number">+</button>
+                        </span>
+
+                        </div>
+                      </td>
+                      <td>
+                        {{(cart.quantity * cart.services.prices) | vndCurrency}}
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="ibox-content row">
+              <div class="col-md-3">
+                <button class="btn btn-white"><i class="fa fa-arrow-left" ></i>
+                  <a href="#services" class="text-decoration-none text-1977cc">  Tiếp tục xem dịch vụ</a>
+                </button>
+              </div>
+              <div class="col-md-7">
+              </div>
+              <div class="col-md-2">
+                <button class="btn bg-1977cc pull-right"><i class="fa fa fa-shopping-cart"></i> Thanh toán</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+          <div class="ibox">
+            <div class="ibox-title">
+              <h5>Tóm tắt chi phí</h5>
+            </div>
+            <div class="ibox-content">
+                    <span>
+                        Tổng tiền
+                    </span>
+              <h2 class="font-bold">
+                {{totalPrices | vndCurrency}}
+              </h2>
+
+              <hr>
+              <div class="m-t-sm">
+                <div class="btn-group">
+                  <a href="#" class="btn bg-1977cc btn-sm"><i class="fa fa-shopping-cart"></i> Thanh toán</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ibox">
+            <div class="ibox-title">
+              <h5>Hỗ trợ</h5>
+            </div>
+            <div class="ibox-content text-center">
+              <h3><i class="fa fa-phone"></i> +84 777 888 999</h3>
+              <span class="small">
+                        Vui lòng liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào. Chúng tôi luôn sẵn sàng 24/24.
+                    </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

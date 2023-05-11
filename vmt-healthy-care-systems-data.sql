@@ -423,7 +423,7 @@ VALUES ('Dành cho nam từ 20 đến 50 tuổi', '19/03/2023',
         1,
         'Theo thời gian làm việc của VMT Healthy Care: Từ 8h00 đến 17h00 từ thứ 2 đến thứ 6 và sáng thứ 7 (từ 8h00 đến 12h00). Khách hàng vui lòng liên hệ với hotline VMT Healthy Care để biết thông tin chi tiết.',
         4, 18,
-        'https://login.medlatec.vn//ImagePath/images/20220506/20220506_nhieu-nam-gioi-qua-lo-lang-khi-kham-nam-khoa-2.jpg');
+        'https://www.umcclinic.com.vn/Data/Sites/1/News/40/kham-suc-khoe-tong-quat.jpg');
 INSERT INTO `vmt_healthy_care_systems`.`services` (`applicable_object`, `date`, `details`, `flag_delete`, `name`,
                                                    `prices`, `quantity`, `sub_title`, `time`, `time_use`, `category_id`,
                                                    `departments_id`, `img`)

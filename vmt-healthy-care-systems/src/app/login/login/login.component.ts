@@ -16,11 +16,9 @@ import {CustomerService} from '../../service/customer.service';
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   username = String;
-  errorMessage = '';
   roles: string[] = [];
   returnUrl: string;
   rememberMe: boolean;
-  isMember = false;
   username1: string;
   role?: string;
 
@@ -31,6 +29,10 @@ export class LoginComponent implements OnInit {
               private shareService: ShareService,
               private doctorService: DoctorService,
               private customerService: CustomerService) {
+    if (this.tokenStorageService.getToken() !== null) {
+      Swal.fire('Bạn đã đăng nhập!', '', 'warning');
+      this.router.navigateByUrl('/');
+    }
   }
 
   isSignUpActive = false;

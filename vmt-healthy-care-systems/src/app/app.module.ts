@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddCustomerComponent } from './component/add-customer/add-customer.component';
 import { DetailCategoryServiceComponent } from './component/detail-category-service/detail-category-service.component';
 import { VndCurrencyPipe } from './model/pipe/vnd-currency.pipe';
+import { CartComponent } from './component/cart/cart.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { VndCurrencyPipe } from './model/pipe/vnd-currency.pipe';
     AddCustomerComponent,
     DetailCategoryServiceComponent,
     VndCurrencyPipe,
+    CartComponent,
   ],
     imports: [
         BrowserModule,

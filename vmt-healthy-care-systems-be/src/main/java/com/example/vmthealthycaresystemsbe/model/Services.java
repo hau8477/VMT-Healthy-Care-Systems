@@ -3,10 +3,12 @@ package com.example.vmthealthycaresystemsbe.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @Entity
-public class Services {
+public class Services implements Comparable<Services>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -171,5 +173,13 @@ public class Services {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public int compareTo(Services o) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate thisDate = LocalDate.parse(date, formatter);
+        LocalDate otherDate = LocalDate.parse(o.date, formatter);
+        return thisDate.compareTo(otherDate);
     }
 }

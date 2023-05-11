@@ -15,7 +15,7 @@ export class DetailCategoryServiceComponent implements OnInit {
   services?: Services[];
   name = '';
   page = 0;
-  size = 12;
+  size = 3;
   totalPages?: number;
   category?: Category;
 
@@ -51,4 +51,25 @@ export class DetailCategoryServiceComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  nextSlide() {
+    if (this.page < this.totalPages) {
+      this.page++;
+    }
+    this.findAllService();
+    this.view();
+  }
+
+  prevSlide() {
+    if (this.page > 0) {
+      this.page--;
+    }
+    this.findAllService();
+    this.view();
+  }
+
+  onSearch() {
+    this.page = 0;
+    this.services = [];
+    this.findAllService();
+  }
 }

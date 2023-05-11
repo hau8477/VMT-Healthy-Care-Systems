@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import {CustomerService} from '../service/customer.service';
 import {Subscription} from 'rxjs';
+import {CartService} from '../service/cart.service';
+import {Cart} from '../model/cart';
 
 @Component({
   selector: 'app-header',
@@ -19,11 +21,14 @@ export class HeaderComponent implements OnInit {
   img?: string;
   name?: string;
   customerChangedSubscription?: Subscription;
+  carts?: Cart[] = [];
+  id?: number;
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
               private doctorService: DoctorService,
               private customerService: CustomerService,
+              private cartService: CartService,
               private route: Router) {
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
@@ -40,6 +45,14 @@ export class HeaderComponent implements OnInit {
 
   view(): void {
     window.scrollTo(0, 0);
+  }
+
+  findAllCart() {
+    this.cartService.findAllByCustomerId(this.id, 0, 0).subscribe(data => {
+      this.carts = data.content;
+    }, error => {
+      console.log('Chưa có gì nha', error);
+    });
   }
 
   loadHeader(): void {
@@ -61,6 +74,8 @@ export class HeaderComponent implements OnInit {
     } else if (this.role === 'ROLE_USER') {
       this.customerService.findTCustomerByEmail(this.username).subscribe(customer => {
         console.log(customer);
+        this.id = customer.id;
+        this.findAllCart();
         this.name = customer.name;
       });
     }
@@ -80,5 +95,9 @@ export class HeaderComponent implements OnInit {
     this.view();
     this.route.navigateByUrl('/login');
     this.ngOnInit();
+  }
+
+  login() {
+    this.route.navigateByUrl('/login');
   }
 }
