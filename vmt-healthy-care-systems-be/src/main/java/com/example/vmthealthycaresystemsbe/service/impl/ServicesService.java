@@ -16,4 +16,9 @@ public class ServicesService implements IServicesService {
     public Page<Services> findAllByCategoryAndName(Long categoryId, String name, Pageable pageable) {
         return this.servicesRepository.findAllByCategory_IdAndNameContaining(categoryId, name, pageable);
     }
+
+    @Override
+    public Services findById(Long id) {
+        return this.servicesRepository.findById(id).orElse(null);
+    }
 }

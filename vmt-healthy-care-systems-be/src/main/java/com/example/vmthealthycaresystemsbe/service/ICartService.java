@@ -8,4 +8,12 @@ public interface ICartService {
     Page<Cart> findAllByCustomerId(Long customerId, Pageable pageable);
 
     Cart updateCart(Long id);
+
+    Cart save(Cart cart);
+
+    Cart findById(Long id);
+
+    Cart increaseQuantity(Long id);
+
+    Cart decreaseQuantity(Long id);
 }

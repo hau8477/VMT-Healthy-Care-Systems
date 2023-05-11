@@ -4,6 +4,7 @@ import {MainComponent} from './main/main.component';
 import {AddCustomerComponent} from './component/add-customer/add-customer.component';
 import {DetailCategoryServiceComponent} from './component/detail-category-service/detail-category-service.component';
 import {CartComponent} from './component/cart/cart.component';
+import {DetailCustomerComponent} from './component/detail-customer/detail-customer.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'cart', component: CartComponent
+  },
+  {
+    path: 'detail-customer', component: DetailCustomerComponent
   }
 ];
 

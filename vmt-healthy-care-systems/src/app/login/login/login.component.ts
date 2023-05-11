@@ -30,7 +30,12 @@ export class LoginComponent implements OnInit {
               private doctorService: DoctorService,
               private customerService: CustomerService) {
     if (this.tokenStorageService.getToken() !== null) {
-      Swal.fire('Bạn đã đăng nhập!', '', 'warning');
+      Swal.fire({
+        title: 'Bạn đã đăng nhập!',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#1977cc',
+      });
       this.router.navigateByUrl('/');
     }
   }
@@ -86,7 +91,8 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           title: 'Thông báo',
           text: 'Đăng nhập thành công!',
-          icon: 'success'
+          icon: 'success',
+          confirmButtonColor: '#1977cc',
         });
         this.role = this.tokenStorageService.getUser().roles[0];
         this.username1 = this.tokenStorageService.getUser().username;

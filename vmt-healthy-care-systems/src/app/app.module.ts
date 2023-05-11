@@ -13,6 +13,7 @@ import { AddCustomerComponent } from './component/add-customer/add-customer.comp
 import { DetailCategoryServiceComponent } from './component/detail-category-service/detail-category-service.component';
 import { VndCurrencyPipe } from './model/pipe/vnd-currency.pipe';
 import { CartComponent } from './component/cart/cart.component';
+import { DetailCustomerComponent } from './component/detail-customer/detail-customer.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { CartComponent } from './component/cart/cart.component';
     DetailCategoryServiceComponent,
     VndCurrencyPipe,
     CartComponent,
+    DetailCustomerComponent,
   ],
     imports: [
         BrowserModule,

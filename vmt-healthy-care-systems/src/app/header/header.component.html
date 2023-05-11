@@ -26,10 +26,12 @@
       <ul>
         <li><a class="nav-link scrollto" routerLink="" (click)="view()">Trang chủ</a></li>
         <li><a class="nav-link scrollto" href="#about">Chúng tôi</a></li>
-        <li><a class="nav-link scrollto" href="#services">Dịch vụ</a></li>
         <li><a class="nav-link scrollto" href="#departments">Khoa</a></li>
         <li><a class="nav-link scrollto" href="#doctors">Bác sĩ</a></li>
-<!--        <li class="dropdown"><a class="text-decoration-none" href="#"><span>Chuyên khoa trọng điểm</span> <i-->
+        <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+        <li><a class="nav-link scrollto" *ngIf="isLoggedIn" routerLink="/info-customer">Thông tin</a></li>
+        <li><a class="nav-link scrollto" href="#services" *ngIf="isLoggedIn">Dịch vụ</a></li>
+        <!--        <li class="dropdown"><a class="text-decoration-none" href="#"><span>Chuyên khoa trọng điểm</span> <i-->
 <!--          class="bi bi-chevron-down"></i></a>-->
 <!--          <ul>-->
 <!--            <li><a href="#">Drop Down 1</a></li>-->
@@ -47,7 +49,6 @@
 <!--            <li><a href="#">Drop Down 4</a></li>-->
 <!--          </ul>-->
 <!--        </li>-->
-        <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
 
         <li class="nav-item position-relative" *ngIf="role === 'ROLE_USER'">
           <a class="nav-link" routerLink="/cart" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

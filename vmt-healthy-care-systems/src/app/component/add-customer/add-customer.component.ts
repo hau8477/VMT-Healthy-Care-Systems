@@ -12,18 +12,32 @@ import Swal from 'sweetalert2';
 })
 export class AddCustomerComponent implements OnInit {
   role?: string;
-  username?: string;
+  username = '';
   formCreateCustomer: FormGroup;
   selectedGender = 4;
 
   constructor(private tokenStorageService: TokenStorageService,
               private customerService: CustomerService,
               private route: Router) {
+
+    if (this.tokenStorageService.getToken() === null) {
+      this.route.navigateByUrl('/login');
+      Swal.fire({
+        title: 'Bạn cần phải đăng nhập!',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#1977cc',
+      });
+    } else {
+      this.username = this.tokenStorageService.getUser().username;
+      this.customerService.findTCustomerByEmail(this.username).subscribe(customer => {
+        this.route.navigateByUrl('/detail-customer');
+      });
+    }
   }
 
   ngOnInit(): void {
     this.role = this.tokenStorageService.getUser().roles[0];
-    this.username = this.tokenStorageService.getUser().username;
     window.scrollTo(0, 0);
     this.initForm();
   }

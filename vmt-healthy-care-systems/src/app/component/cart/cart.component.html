@@ -15,7 +15,7 @@
             </div>
 
             <div *ngIf="carts?.length === 0" class="d-flex justify-content-center mg-bottom text-danger">
-              <h4>Mục quan tâm trống.</h4>
+              <h4>Giỏ hàng trống.</h4>
             </div>
 
             <div *ngFor="let cart of carts">
@@ -38,27 +38,30 @@
                         </p>
                         <dl class="small m-b-none">
                           <dt>{{cart.services.prices | vndCurrency}}</dt>
-                          <dd>Ngày phát hành: {{cart.services.date}}</dd>
+<!--                          <dd>Ngày phát hành: {{cart.services.date}}</dd>-->
+                          <dd>Số lượng còn lại: {{cart.services.quantity}}</dd>
                         </dl>
 
                         <div class="m-t-sm">
                           <!--                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>-->
                           <!--                        |-->
                           <a (click)="deleteCart(cart.services.name, cart.id)"
-                             class="text-muted"><i class="fa fa-trash"></i> Xóa khỏi mục quan tâm</a>
+                             class="text-muted"><i class="fa fa-trash"></i> Xóa khỏi giỏ hàng</a>
                         </div>
                       </td>
                       <td class="width-c">
                         <div class="input-group">
 
                         <span class="input-group-prepend">
-                          <button type="button" class="btn btn-default btn-number">-</button>
+                          <button type="button" [disabled]="cart?.quantity === 1" class="btn btn-default btn-number border"
+                                  (click)="decreaseQuantity(cart.id)">-</button>
                         </span>
 
                           <p class="form-control">{{cart.quantity}}</p>
 
                           <span class="input-group-append">
-                          <button type="button" class="btn btn-default btn-number">+</button>
+                          <button type="button" [disabled]="cart?.quantity >= cart.services.quantity" class="btn btn-default btn-number border"
+                                  (click)="increaseQuantity(cart.id)">+</button>
                         </span>
 
                         </div>
@@ -83,7 +86,8 @@
               <div class="col-md-7">
               </div>
               <div class="col-md-2">
-                <button class="btn bg-1977cc pull-right"><i class="fa fa fa-shopping-cart"></i> Thanh toán</button>
+                <button class="btn bg-1977cc pull-right" [disabled]="totalPrices === 0"
+                        (click)="showPayment()"><i class="fa fa fa-shopping-cart"></i> Thanh toán</button>
               </div>
             </div>
 
@@ -106,9 +110,11 @@
 
               <hr>
               <div class="m-t-sm">
-                <div class="btn-group">
-                  <a href="#" class="btn bg-1977cc btn-sm"><i class="fa fa-shopping-cart"></i> Thanh toán</a>
+                <div class="btn-group" >
+                  <button [disabled]="totalPrices === 0"
+                          class="btn bg-1977cc pull-right" (click)="showPayment()"><i class="fa fa-shopping-cart"></i> Thanh toán</button>
                 </div>
+                <div class="mg-top-2" id="payments" [hidden]="totalPrices === 0"></div>
               </div>
             </div>
           </div>

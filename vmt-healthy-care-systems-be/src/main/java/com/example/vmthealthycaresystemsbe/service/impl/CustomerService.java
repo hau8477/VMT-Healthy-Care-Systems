@@ -18,6 +18,18 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer save(Customer customer) {
         Account account = this.accountRepository.findAccountByEmail(customer.getEmail());
+
+        if (account == null) {
+            return null;
+        }
+
+        Customer customerPhone = this.customerRepository.findByPhone(customer.getPhone()).orElse(null);
+        Customer customerIdCard = this.customerRepository.findByIdCard(customer.getIdCard()).orElse(null);
+
+        if (customerPhone != null || customerIdCard != null) {
+            return null;
+        }
+
         customer.setAccount(account);
         return this.customerRepository.save(customer);
     }
@@ -25,5 +37,10 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer findByEmail(String email) {
         return this.customerRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public Customer findById(Long id) {
+        return this.customerRepository.findById(id).orElse(null);
     }
 }

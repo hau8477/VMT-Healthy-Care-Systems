@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
     });
     this.findNameUser();
     this.customerChangedSubscription = this.customerService.customerChanged$.subscribe(() => {
+      this.findAllCart();
       this.loadHeader();
     });
   }
@@ -51,6 +52,7 @@ export class HeaderComponent implements OnInit {
     this.cartService.findAllByCustomerId(this.id, 0, 0).subscribe(data => {
       this.carts = data.content;
     }, error => {
+      this.carts = [];
       console.log('Chưa có gì nha', error);
     });
   }
@@ -82,12 +84,14 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    this.carts = [];
     this.role = null;
     this.tokenStorageService.signOut();
     Swal.fire({
       title: 'Thông báo',
       text: 'Đăng xuất thành công!',
-      icon: 'success'
+      icon: 'success',
+      confirmButtonColor: '#1977cc',
     });
     this.username = null;
     this.isLoggedIn = false;

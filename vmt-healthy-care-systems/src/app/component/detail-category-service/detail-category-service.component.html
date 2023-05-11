@@ -9,7 +9,7 @@
         <div class="input-group">
           <input type="text" class="form-control rounded-pill mg-right" placeholder="Tìm kiếm dịch vụ"
                  id="groups-search"
-          [(ngModel)]="name">
+                 [(ngModel)]="name">
           <button class="btn btn-1977cc rounded-pill mg-right fs-small" (click)="onSearch()">Tìm kiếm</button>
         </div>
       </div>
@@ -31,11 +31,14 @@
             <div class="card-body">
               <h5 class="card-title font-color"><strong>{{service.name}}</strong></h5>
               <p class="card-text text-truncate">{{service.subTitle}}</p>
-              <p class="card-text"><small class="text-muted"><strong>{{ service.prices | vndCurrency }}</strong></small></p>
-              <p class="card-text"><small class="text-muted"><strong>Số lượng còn lại: </strong>{{service.quantity}}</small></p>
+              <p class="card-text"><small class="text-muted"><strong>{{ service.prices | vndCurrency }}</strong></small>
+              </p>
+              <p class="card-text"><small class="text-muted"><strong>Số lượng còn lại: </strong>{{service.quantity}}
+              </small></p>
               <p class="card-text"><small class="text-muted">Ngày phát hành: {{service.date}}</small></p>
               <div class="d-flex justify-content-end align-items-center">
-                <button type="button" class="btn btn-1977cc me-2">
+                <button *ngIf="customer" (click)="showModal(service)" type="button" class="btn btn-1977cc me-2" data-bs-toggle="modal"
+                        data-bs-target="#addToCart">
                   <i class="bi bi-cart"> Thêm vào giỏ hàng</i>
                 </button>
                 <button type="button" class="btn btn-outline-primary"><i class="bi bi-heart"></i></button>
@@ -52,4 +55,36 @@
     <button class="btn btn-1977cc" [disabled]="page === totalPages - 1" (click)="nextSlide()">Trang sau</button>
   </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><strong>Mua dịch vụ</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <p class="font-color "><strong>Bạn muốn mua <span class="text-1977cc">{{serviceModal?.name}}</span> với số lượng: </strong></p>
+        </div>
+        <div class="input-group mb-3 d-flex justify-content-center">
+          <div class="input-group-prepend mg-modal">
+            <button class="btn btn-outline-secondary" [disabled]="quantity === 1" type="button" (click)="decreaseQuantity()">-</button>
+          </div>
+          <div class="widthModal">
+            <input style="border: none;box-shadow: none;" type="text" class="form-control" [(ngModel)]="quantity">
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" [disabled]="quantity === serviceModal?.quantity" type="button" (click)="increaseQuantity()">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-1977cc" (click)="addToCart()" data-bs-dismiss="modal">Xác nhận</button>
+      </div>
+    </div>
+  </div>
 </div>
