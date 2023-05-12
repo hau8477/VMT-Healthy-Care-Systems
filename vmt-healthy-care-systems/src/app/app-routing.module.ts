@@ -6,6 +6,7 @@ import {DetailCategoryServiceComponent} from './component/detail-category-servic
 import {CartComponent} from './component/cart/cart.component';
 import {DetailCustomerComponent} from './component/detail-customer/detail-customer.component';
 import {ServicePurchasedComponent} from './component/service-purchased/service-purchased.component';
+import {DetailServiceComponent} from './component/detail-service/detail-service.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,9 @@ const routes: Routes = [
   },
   {
     path: 'service-purchases', component: ServicePurchasedComponent
+  },
+  {
+    path: 'detail-service/:id', component: DetailServiceComponent
   }
 ];
 

@@ -34,4 +34,15 @@ public class ServicesRestController {
 
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
+
+    @GetMapping("/public/details/{serviceId}")
+    public ResponseEntity<Services> findById(@PathVariable Long serviceId) {
+        Services services = this.servicesService.findById(serviceId);
+
+        if (services == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
 }

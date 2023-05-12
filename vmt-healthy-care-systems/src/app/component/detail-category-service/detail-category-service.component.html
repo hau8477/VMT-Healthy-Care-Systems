@@ -29,7 +29,7 @@
           </div>
           <div class="col-md-9">
             <div class="card-body">
-              <h5 class="card-title font-color"><strong>{{service?.name}}</strong></h5>
+              <h5 class="card-title font-color"><strong><a routerLink="/detail-service/{{service?.id}}">{{service?.name}}</a></strong></h5>
               <p class="card-text text-truncate">{{service?.subTitle}}</p>
               <p class="card-text"><small class="text-muted"><strong>{{ service?.prices | vndCurrency }}</strong></small>
               </p>

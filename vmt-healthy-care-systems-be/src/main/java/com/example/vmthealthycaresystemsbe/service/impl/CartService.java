@@ -66,7 +66,14 @@ public class CartService implements ICartService {
         for (Cart cartM : carts) {
             if (Objects.equals(cart.getServices().getId(), cartM.getServices().getId()) &&
                     Objects.equals(cart.getCustomer().getId(), cartM.getCustomer().getId()) && !cartM.isFlagDelete()) {
-                cartM.setQuantity(cartM.getQuantity() + cart.getQuantity());
+                int quantity = cartM.getQuantity() + cart.getQuantity();
+
+                if (quantity > services.getQuantity()) {
+                    cartM.setQuantity(services.getQuantity());
+                } else {
+                    cartM.setQuantity(cartM.getQuantity() + cart.getQuantity());
+                }
+                
                 return this.cartRepository.save(cartM);
             }
         }
