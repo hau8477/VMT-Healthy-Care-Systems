@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   selectedDoctorId = 0;
   selectedDepartmentsId = 0;
   role?: string;
-  username: string;
+  username?: string;
   name: string;
 
   constructor(private doctorService: DoctorService,

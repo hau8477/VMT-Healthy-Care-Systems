@@ -27,8 +27,8 @@ export class DetailCategoryServiceComponent implements OnInit {
   category?: Category;
   quantity = 1;
   serviceModal: Services;
-  role: string;
-  username: string;
+  role?: string;
+  username?: string;
   customer: Customer;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -44,10 +44,8 @@ export class DetailCategoryServiceComponent implements OnInit {
     if (this.tokenStorageService.getToken() !== null) {
       this.role = this.tokenStorageService.getUser().roles[0];
       this.username = this.tokenStorageService.getUser().username;
-    } else {
-      this.route.navigateByUrl('/');
+      this.findUser();
     }
-    this.findUser();
   }
 
   ngOnInit(): void {

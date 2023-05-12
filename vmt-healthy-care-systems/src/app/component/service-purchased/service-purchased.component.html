@@ -1,0 +1,96 @@
+<div class="mg-top container-fluid">
+  <div class="justify-content-center mb-3 text-black ">
+    <p class="text-center fs-3 font-color"><strong>Dịch vụ đã mua</strong></p>
+  </div>
+
+  <!--  <div class="container">-->
+  <!--    <div class="row justify-content-end mb-3">-->
+  <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
+  <!--        <div class="input-group">-->
+  <!--          <input type="text" class="form-control rounded-pill mg-right" placeholder="Tìm kiếm dịch vụ"-->
+  <!--                 id="groups-search"-->
+  <!--                 [(ngModel)]="name">-->
+  <!--          <button class="btn btn-1977cc rounded-pill mg-right fs-small" (click)="onSearch()">Tìm kiếm</button>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <div *ngIf="servicePurchases?.length === 0" class="d-flex justify-content-center mg-bottom text-danger">
+    <h4>Không tìm thấy dịch vụ.</h4>
+  </div>
+
+  <div *ngFor="let servicePurchase of servicePurchases">
+    <div class="container">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img [src]="servicePurchase?.services?.img" alt="Product Image" class="img-fluid rounded-start size">
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <h5 class="card-title font-color"><strong>{{servicePurchase?.services?.name}}</strong></h5>
+              <p class="card-text text-truncate">{{servicePurchase?.services?.subTitle}}</p>
+              <p class="card-text">
+                <small class="text-muted">
+                  <strong>Tổng tiền: {{ servicePurchase?.totalsPrice | vndCurrency }}</strong>
+                </small>
+              <p [ngStyle]="servicePurchase?.quantity === 0 ? {'text-decoration': 'line-through'} : {}"
+                 class="card-text"><small class="text-muted"><strong>Số lượt sử dụng còn lại: </strong>
+              </small>{{servicePurchase?.quantity}}</p>
+              <p class="card-text"><small class="text-muted">Ngày mua: {{servicePurchase?.datePurchase}}</small></p>
+              <div class="d-flex justify-content-end align-items-center">
+                <button [disabled]="servicePurchase?.quantity === 0" type="button" class="btn btn-1977cc me-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addToCart">
+                  <i [ngStyle]="servicePurchase?.quantity === 0 ? {'text-decoration': 'line-through'} : {}"
+                     > In hóa đơn dịch vụ</i>
+<!--                  class="bi bi-cart"-->
+                </button>
+                <button type="button" class="btn btn-outline-primary"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mg-bottom-2" *ngIf="servicePurchases?.length > 0">
+    <button class="btn btn-1977cc mg-right" [disabled]="page === 0" (click)="prevSlide()">Trang trước</button>
+    <button class="btn btn-1977cc" [disabled]="page === totalPages - 1" (click)="nextSlide()">Trang sau</button>
+  </div>
+
+</div>
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="addToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel"><strong>Mua dịch vụ</strong></h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <div>-->
+<!--          <p class="font-color "><strong>Bạn muốn mua <span class="text-1977cc">{{serviceModal?.name}}</span> với số lượng: </strong></p>-->
+<!--        </div>-->
+<!--        <div class="input-group mb-3 d-flex justify-content-center">-->
+<!--          <div class="input-group-prepend mg-modal">-->
+<!--            <button class="btn btn-outline-secondary" [disabled]="quantity === 1" type="button" (click)="decreaseQuantity()">-</button>-->
+<!--          </div>-->
+<!--          <div class="widthModal">-->
+<!--            <input style="border: none;box-shadow: none;" type="text" class="form-control" [(ngModel)]="quantity">-->
+<!--          </div>-->
+<!--          <div class="input-group-append">-->
+<!--            <button class="btn btn-outline-secondary" [disabled]="quantity === serviceModal?.quantity" type="button" (click)="increaseQuantity()">+</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>-->
+<!--        <button type="button" class="btn btn-1977cc" (click)="addToCart()" data-bs-dismiss="modal">Xác nhận</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

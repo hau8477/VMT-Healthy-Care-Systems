@@ -3,6 +3,7 @@ import {TokenStorageService} from '../../service/token-storage.service';
 import {CustomerService} from '../../service/customer.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {Customer} from '../../model/customer';
 
 @Component({
   selector: 'app-detail-customer',
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 export class DetailCustomerComponent implements OnInit {
   role?: string;
   username = '';
+  customer?: Customer;
 
   constructor(private tokenStorageService: TokenStorageService,
               private customerService: CustomerService,
@@ -34,6 +36,13 @@ export class DetailCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.findCustomerById();
+  }
+
+  findCustomerById() {
+    this.customerService.findTCustomerByEmail(this.username).subscribe(customer => {
+      this.customer = customer;
+    });
   }
 
 }

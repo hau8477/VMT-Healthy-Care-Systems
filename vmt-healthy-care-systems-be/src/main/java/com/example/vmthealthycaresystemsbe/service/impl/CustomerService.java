@@ -8,6 +8,8 @@ import com.example.vmthealthycaresystemsbe.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
@@ -30,6 +32,10 @@ public class CustomerService implements ICustomerService {
             return null;
         }
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = String.format(String.valueOf(formatter));
+
+        customer.setDateOfBirth(formattedDate);
         customer.setAccount(account);
         return this.customerRepository.save(customer);
     }

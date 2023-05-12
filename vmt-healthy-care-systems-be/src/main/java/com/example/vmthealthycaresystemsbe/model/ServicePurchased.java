@@ -18,6 +18,8 @@ public class ServicePurchased {
     private String qr;
     private String datePurchase;
 
+    private double totalsPrice;
+
     public ServicePurchased() {
     }
 
@@ -75,5 +77,13 @@ public class ServicePurchased {
 
     public void setDatePurchase(String datePurchase) {
         this.datePurchase = datePurchase;
+    }
+
+    public double getTotalsPrice() {
+        return totalsPrice;
+    }
+
+    public void setTotalsPrice(double totalsPrice) {
+        this.totalsPrice = totalsPrice;
     }
 }

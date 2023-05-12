@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("api/carts")
@@ -87,6 +89,17 @@ public class CartRestController {
         Cart cart = this.cartService.decreaseQuantity(cartId);
 
         if (cart == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/payment")
+    public ResponseEntity<?> payment(@RequestBody List<Long> listIdCart) {
+        Boolean result = this.cartService.payment(listIdCart);
+
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

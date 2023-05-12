@@ -14,7 +14,7 @@ public class CategoryRestController {
     @Autowired
     private ICategoryService categoryService;
 
-    @GetMapping("/details/{id}")
+    @GetMapping("/public/details/{id}")
     public ResponseEntity<Category> findById(@PathVariable Long id) {
         Category category = this.categoryService.findById(id);
 

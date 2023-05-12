@@ -11,6 +11,6 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) { }
 
   findById(id: number): Observable<Category> {
-    return this.httpClient.get<Category>('http://localhost:8080/api/categories/details/' + id);
+    return this.httpClient.get<Category>('http://localhost:8080/api/categories/public/details/' + id);
   }
 }

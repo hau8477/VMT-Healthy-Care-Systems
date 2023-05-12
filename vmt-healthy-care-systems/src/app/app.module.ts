@@ -14,6 +14,8 @@ import { DetailCategoryServiceComponent } from './component/detail-category-serv
 import { VndCurrencyPipe } from './model/pipe/vnd-currency.pipe';
 import { CartComponent } from './component/cart/cart.component';
 import { DetailCustomerComponent } from './component/detail-customer/detail-customer.component';
+import { ServicePurchasedComponent } from './component/service-purchased/service-purchased.component';
+import { DetailServiceComponent } from './component/detail-service/detail-service.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { DetailCustomerComponent } from './component/detail-customer/detail-cust
     VndCurrencyPipe,
     CartComponent,
     DetailCustomerComponent,
+    ServicePurchasedComponent,
+    DetailServiceComponent,
   ],
     imports: [
         BrowserModule,

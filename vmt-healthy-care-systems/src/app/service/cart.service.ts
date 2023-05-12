@@ -32,6 +32,6 @@ export class CartService {
   }
 
   payment(cartIds: number[]): Observable<any> {
-    return this.httpClient.post<any>('', cartIds);
+    return this.httpClient.post<any>('http://localhost:8080/api/carts/payment', cartIds);
   }
 }

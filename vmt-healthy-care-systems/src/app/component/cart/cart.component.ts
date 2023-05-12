@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
     if (this.tokenStorageService.getToken() === null) {
       this.route.navigateByUrl('/login');
       Swal.fire({
-        title: 'Bạn đã cần phải đăng nhập!',
+        title: 'Bạn cần phải đăng nhập!',
         icon: 'warning',
         confirmButtonText: 'OK',
         confirmButtonColor: '#1977cc',
@@ -66,13 +66,18 @@ export class CartComponent implements OnInit {
             this.findTotalPrices();
             this.view();
             this.customerService.customerChanged();
+            this.route.navigateByUrl('/service-purchases');
           }, error => {
             Swal.fire({
               title: 'Thanh toán thất bại!',
+              text: 'Số lượng còn lại không đủ với số lượng mua.',
               icon: 'error',
               confirmButtonText: 'OK',
               confirmButtonColor: '#1977cc',
             });
+            this.findAllCart();
+            this.findTotalPrices();
+            this.view();
           });
         }
       }

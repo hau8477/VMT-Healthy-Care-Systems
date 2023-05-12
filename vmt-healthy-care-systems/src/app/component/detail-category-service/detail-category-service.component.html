@@ -25,21 +25,22 @@
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-3">
-            <img [src]="service.img" alt="Product Image" class="img-fluid rounded-start size">
+            <img [src]="service?.img" alt="Product Image" class="img-fluid rounded-start size">
           </div>
           <div class="col-md-9">
             <div class="card-body">
-              <h5 class="card-title font-color"><strong>{{service.name}}</strong></h5>
-              <p class="card-text text-truncate">{{service.subTitle}}</p>
-              <p class="card-text"><small class="text-muted"><strong>{{ service.prices | vndCurrency }}</strong></small>
+              <h5 class="card-title font-color"><strong>{{service?.name}}</strong></h5>
+              <p class="card-text text-truncate">{{service?.subTitle}}</p>
+              <p class="card-text"><small class="text-muted"><strong>{{ service?.prices | vndCurrency }}</strong></small>
               </p>
-              <p class="card-text"><small class="text-muted"><strong>Số lượng còn lại: </strong>{{service.quantity}}
+              <p [ngStyle]="service?.quantity === 0 ? {'text-decoration': 'line-through'} : {}"
+                  class="card-text"><small class="text-muted"><strong>Số lượng còn lại: </strong>{{service?.quantity}}
               </small></p>
               <p class="card-text"><small class="text-muted">Ngày phát hành: {{service.date}}</small></p>
               <div class="d-flex justify-content-end align-items-center">
-                <button *ngIf="customer" (click)="showModal(service)" type="button" class="btn btn-1977cc me-2" data-bs-toggle="modal"
+                <button [disabled]="service?.quantity === 0" *ngIf="customer" (click)="showModal(service)" type="button" class="btn btn-1977cc me-2" data-bs-toggle="modal"
                         data-bs-target="#addToCart">
-                  <i class="bi bi-cart"> Thêm vào giỏ hàng</i>
+                  <i [ngStyle]="service?.quantity === 0 ? {'text-decoration': 'line-through'} : {}" class="bi bi-cart"> Thêm vào giỏ hàng</i>
                 </button>
                 <button type="button" class="btn btn-outline-primary"><i class="bi bi-heart"></i></button>
               </div>
@@ -50,7 +51,7 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-center" *ngIf="services?.length > 0">
+  <div class="d-flex justify-content-center mg-bottom-2" *ngIf="services?.length > 0">
     <button class="btn btn-1977cc mg-right" [disabled]="page === 0" (click)="prevSlide()">Trang trước</button>
     <button class="btn btn-1977cc" [disabled]="page === totalPages - 1" (click)="nextSlide()">Trang sau</button>
   </div>
