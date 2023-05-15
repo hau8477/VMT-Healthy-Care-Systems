@@ -31,11 +31,11 @@ public class CustomerService implements ICustomerService {
         if (customerPhone != null || customerIdCard != null) {
             return null;
         }
+//
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        String formattedDate = String.format(String.valueOf(formatter));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String formattedDate = String.format(String.valueOf(formatter));
-
-        customer.setDateOfBirth(formattedDate);
+        customer.setDateOfBirth(customer.getDateOfBirth());
         customer.setAccount(account);
         return this.customerRepository.save(customer);
     }

@@ -10,9 +10,9 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "varchar(255)", unique = true, nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String name;
-    @Column(columnDefinition = "varchar(50)", unique = true, nullable = false)
+    @Column(columnDefinition = "varchar(50)", nullable = false)
     private String dateOfBirth;
     private boolean gender;
     @Column(columnDefinition = "varchar(50)", unique = true, nullable = false)
@@ -21,7 +21,7 @@ public class Customer {
     private String phone;
     @Column(columnDefinition = "varchar(50)", unique = true, nullable = false)
     private String email;
-    @Column(columnDefinition = "varchar(255)", unique = true, nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String address;
     @Column(columnDefinition = "bit(1)")
     private boolean flagDelete;
